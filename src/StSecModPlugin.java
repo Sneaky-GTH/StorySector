@@ -1,5 +1,4 @@
 import com.fs.starfarer.api.BaseModPlugin;
-import com.fs.starfarer.api.Global;
 
 public class StSecModPlugin extends BaseModPlugin {
     @Override
