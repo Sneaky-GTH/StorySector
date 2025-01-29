@@ -1,0 +1,5 @@
+$menuState == main
+$faction.id == sindrian_diktat
+$hasMarket
+$global.daysSinceStart > 60
+$global.(customflag)

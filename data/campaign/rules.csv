@@ -1,0 +1,32 @@
+id,trigger,conditions,script,text,options,notes
+# The Chained One,,,,,,
+stsec_ChOneStart,GAPostOpen,"$id == station_galatia_academy
+$stsec_metChOne == false",SetOptionColor stsecChOne_start_yes highlight,"The stark white hulls of Galatia Academy Station crawl past in slow, magisterial rotation; the ivory tower looms before you. Your request to the docking queue is approved. Your comms officer helpfully mutes the chirpy, automated vid-feed presenting a bowdlerized history of the Galatia Academy and its role in providing education and research to the Persean Sector while remaining above political influence.
+
+The landing promenade is filled with modest civilian transports, a few high-end personal craft, and, at the far end, a row of freighters offloading supplies. A junior academy agent greets you in a landing lounge with promotional paraphernalia in hand.
+
+As you walk past the academy agent, your attention is grabbed by a tune coming from your TriPad – a scammer? An explorer out of fuel? An incoming AI inspection? You decide to…","stsec_ChOneStart_opt_yes:Pull out your TriPad.
+stsec_ChOneStart_opt_no:Ignore it.",
+stsec_ChOneStart2,DialogOptionSelected,$option == stsec_ChOneStart_opt_yes,$stsec_metChOne = true,"Upon taking a look at your tablet, it appears that you are receiving a call from an unknown source. Of course, generally that should immediately discredit any notion of this being something worthwhile, but… maybe this time will be different?","stsec_ChOneCall_opt_yes:Pick up the call.
+stsec_ChOneCall_opt_probe:Quickly forward the number to your comms officer.
+stsec_ChOneCall_opt_no:Only a fool picks up unknown calls. Ignore and move on.",
+stsec_ChOneStartEnd,DialogOptionSelected,$option == stsec_ChOneStart_opt_no,"FireAll PopulateOptions
+$stsec_metChOne = true","Without even checking who it is that is calling you, you decide to move on to more important things, such as doing literally anything else other than responding to random scam callers.
+
+Although a part of you is wondering if, perhaps, you just missed something interesting. Ah, well, the sector is interesting enough as it is, no? You ignore the thoughts and move on.",,
+stsec_ChOneCallStart,DialogOptionSelected,$option == stsec_ChOneCall_opt_yes,BeginConversation lily,"As soon as you pick up the call, you immediately hear a frantic and distressed voice on the other end, although unfortunately the audio quality leaves much to be desired.
+
+“Sorry, I don’t have much time, but I… really need your help. I know this is a lot to ask, but I’ve send you a program – your technicians will, uh, be able to handle it. Run it on any program on the academy n-network. It will open up a channel to.. communicate.”
+
+After she stops talking, you are greeted by a barrage of beeps, some longer than others. After several seconds, it ends, the silence much appreciated by your ears, though it is quickly interrupted by a call from your comms officer. “$PlayerSirOrMadam, our technicians have already compiled the program you were receiving. It seemed to just be… pure machine code. I am sending it to your TriPad, although,” the officer pauses for a moment, wondering whether he should even be stating the obvious, “I’m not sure if running random code from a stranger on the Academy network would be an, uh.. good idea, $PlayerSirOrMadam.”",stsec_ChOneCall_cont1:Continue.,
+stsec_ChOneCallProbe,DialogOptionSelected,$option == stsec_ChOneCall_opt_probe,,"You quickly send off the number and information about the call to your comms officer to check out, hoping that they will respond before the caller hangs up.
+
+The comms officer, dutiful as ever, is able to quickly locate the source of the signal. ""It appears to originate from the Academy itself. Beyond that, the signal appears to be surprisingly well encrypted, too well for us to crack it in any meaningful timeframe.""
+
+You thank him for his attempts and go back to your TriPad – the caller, quite surprisingly, not having given up on you yet. With the new gained information, you decide to…","stsec_ChOneCall_opt_yes:Pick up the call.
+stsec_ChOneCall_opt_no:Only a fool picks up unknown calls. Ignore and move on.",
+stsec_ChOneCallEnd,DialogOptionSelected,$option == stsec_ChOneCall_opt_no,"EndConversation
+FireAll PopulateOptions","Although a call coming from inside the Academy itself could be worthwhile, you decide that you have better things to do, such as meetings with the Provost of the whole academy and what not.
+
+Although a part of you is wondering if, perhaps, you just missed something interesting. Ah, well, the sector is interesting enough as it is, no? You ignore the thoughts and move on.
+",,

@@ -1,0 +1,10 @@
+{
+    "id": "storysector",
+    "name": "StorySector",
+    "author": "Sneaky",
+    "version": "0.1",
+    "description": "A bunch of missions cobbled together. Hopefully.",
+    "gameVersion": "0.97",
+    "jars":["jars/StorySector.jar"],
+    "modPlugin": "StSecModPlugin"
+}
