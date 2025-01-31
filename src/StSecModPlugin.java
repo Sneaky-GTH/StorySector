@@ -1,4 +1,5 @@
 import com.fs.starfarer.api.BaseModPlugin;
+import campaign.people.ChainedOnePeople;
 
 public class StSecModPlugin extends BaseModPlugin {
     @Override

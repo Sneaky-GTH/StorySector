@@ -5,6 +5,7 @@
       <root url="jar://$PROJECT_DIR$/../../xstream-1.4.10.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../lwjgl.jar!/" />
       <root url="jar://$PROJECT_DIR$/../../lwjgl_util.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../log4j-1.2.9.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

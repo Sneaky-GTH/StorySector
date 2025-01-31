@@ -2,7 +2,11 @@
 
 	"graphics":{
 		"characters":{
-			"lily":"graphics/portraits/characters/lily.png"
+			"lily":"graphics/portraits/characters/lily.png",
+			"stsec_ga_receptionist":"graphics/portraits/characters/ga_receptionist.png"
+		},
+		"illustrations":{
+			"library_academia":"graphics/illustrations/library_academia.png"
 		}	
 	}
 

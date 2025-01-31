@@ -1,32 +1,169 @@
 id,trigger,conditions,script,text,options,notes
-# The Chained One,,,,,,
+# The Chained One,,,,,,ShowImageVisual volturn_shrine_fake
 stsec_ChOneStart,GAPostOpen,"$id == station_galatia_academy
-$stsec_metChOne == false",SetOptionColor stsecChOne_start_yes highlight,"The stark white hulls of Galatia Academy Station crawl past in slow, magisterial rotation; the ivory tower looms before you. Your request to the docking queue is approved. Your comms officer helpfully mutes the chirpy, automated vid-feed presenting a bowdlerized history of the Galatia Academy and its role in providing education and research to the Persean Sector while remaining above political influence.
+$stsec_metChOne == false",,"The stark white hulls of Galatia Academy Station crawl past in slow, magisterial rotation; the ivory tower looms before you. Your request to the docking queue is approved. Your comms officer helpfully mutes the chirpy, automated vid-feed presenting a bowdlerized history of the Galatia Academy and its role in providing education and research to the Persean Sector while remaining above political influence.
 
 The landing promenade is filled with modest civilian transports, a few high-end personal craft, and, at the far end, a row of freighters offloading supplies. A junior academy agent greets you in a landing lounge with promotional paraphernalia in hand.
 
-As you walk past the academy agent, your attention is grabbed by a tune coming from your TriPad – a scammer? An explorer out of fuel? An incoming AI inspection? You decide to…","stsec_ChOneStart_opt_yes:Pull out your TriPad.
-stsec_ChOneStart_opt_no:Ignore it.",
-stsec_ChOneStart2,DialogOptionSelected,$option == stsec_ChOneStart_opt_yes,$stsec_metChOne = true,"Upon taking a look at your tablet, it appears that you are receiving a call from an unknown source. Of course, generally that should immediately discredit any notion of this being something worthwhile, but… maybe this time will be different?","stsec_ChOneCall_opt_yes:Pick up the call.
-stsec_ChOneCall_opt_probe:Quickly forward the number to your comms officer.
-stsec_ChOneCall_opt_no:Only a fool picks up unknown calls. Ignore and move on.",
+As you walk past the academy agent, your attention is grabbed by a tune coming from your TriPad – a scammer? An explorer out of fuel? An incoming AI inspection? You decide to…","stsec_ChOneStart_opt_yes:Pull out your TriPad
+stsec_ChOneStart_opt_no:Ignore it",
+stsec_ChOneStart2,DialogOptionSelected,$option == stsec_ChOneStart_opt_yes,$stsec_metChOne = true,"Upon taking a look at your tablet, it appears that you are receiving a call from an unknown source. Of course, generally that should immediately discredit any notion of this being something worthwhile, but… maybe this time will be different?","stsec_ChOneCall_opt_yes:Pick up the call
+stsec_ChOneCall_opt_probe:Quickly forward the number to your comms officer
+stsec_ChOneCall_opt_no:Only a fool picks up unknown calls. Ignore and move on",
 stsec_ChOneStartEnd,DialogOptionSelected,$option == stsec_ChOneStart_opt_no,"FireAll PopulateOptions
 $stsec_metChOne = true","Without even checking who it is that is calling you, you decide to move on to more important things, such as doing literally anything else other than responding to random scam callers.
 
 Although a part of you is wondering if, perhaps, you just missed something interesting. Ah, well, the sector is interesting enough as it is, no? You ignore the thoughts and move on.",,
-stsec_ChOneCallStart,DialogOptionSelected,$option == stsec_ChOneCall_opt_yes,BeginConversation lily,"As soon as you pick up the call, you immediately hear a frantic and distressed voice on the other end, although unfortunately the audio quality leaves much to be desired.
+stsec_ChOneCallStart,DialogOptionSelected,$option == stsec_ChOneCall_opt_yes,BeginConversation stsec_lily,"As soon as you pick up the call, you immediately hear a woman on the other end, audibly frantic and distressed. Unfortunately the audio quality leaves much to be desired.
 
-“Sorry, I don’t have much time, but I… really need your help. I know this is a lot to ask, but I’ve send you a program – your technicians will, uh, be able to handle it. Run it on any program on the academy n-network. It will open up a channel to.. communicate.”
+""Sorry, I don’t have time, but I… really ne-- --ur help. I know this --- lot to ask, but I’ve ---- you a program. Your tech------- will, uh, be able to handle it. Run it on --- device on the academy n-network. It will open -- - channel to.. communicate.""",stsec_ChOneCallCont_opt_cont:Continue,
+stsec_ChOneCallCont,DialogOptionSelected,$option == stsec_ChOneCallCont_opt_cont,"SetOptionColor stsec_ChOneCallCont_opt_yes highlight
+ShowDefaultVisual","After she stops talking, you are greeted by a barrage of beeps, some longer than others. After several seconds, it ends, the silence much appreciated by your ears, though it is quickly interrupted by a call from your comms officer.
 
-After she stops talking, you are greeted by a barrage of beeps, some longer than others. After several seconds, it ends, the silence much appreciated by your ears, though it is quickly interrupted by a call from your comms officer. “$PlayerSirOrMadam, our technicians have already compiled the program you were receiving. It seemed to just be… pure machine code. I am sending it to your TriPad, although,” the officer pauses for a moment, wondering whether he should even be stating the obvious, “I’m not sure if running random code from a stranger on the Academy network would be an, uh.. good idea, $PlayerSirOrMadam.”",stsec_ChOneCall_cont1:Continue.,
+""$PlayerSirOrMadam, our technicians have already compiled the program you were receiving. It seemed to just be… pure machine code. I am sending it to your TriPad, although,"" the officer pauses for a moment, wondering whether he should even be stating the obvious, ""I’m not sure if running random code from a stranger on the Academy network would be an, uh.. good idea, $PlayerSirOrMadam.""","stsec_ChOneCallCont_opt_yes:""What if she really does need our help?""
+stsec_ChOneCallCont_opt_probe:""Can’t you check what the program does?""
+stsec_ChOneCallCont_opt_no:""It is too high of a risk indeed.""",
 stsec_ChOneCallProbe,DialogOptionSelected,$option == stsec_ChOneCall_opt_probe,,"You quickly send off the number and information about the call to your comms officer to check out, hoping that they will respond before the caller hangs up.
 
 The comms officer, dutiful as ever, is able to quickly locate the source of the signal. ""It appears to originate from the Academy itself. Beyond that, the signal appears to be surprisingly well encrypted, too well for us to crack it in any meaningful timeframe.""
 
-You thank him for his attempts and go back to your TriPad – the caller, quite surprisingly, not having given up on you yet. With the new gained information, you decide to…","stsec_ChOneCall_opt_yes:Pick up the call.
-stsec_ChOneCall_opt_no:Only a fool picks up unknown calls. Ignore and move on.",
-stsec_ChOneCallEnd,DialogOptionSelected,$option == stsec_ChOneCall_opt_no,"EndConversation
+You thank him for his attempts and go back to your TriPad – the caller, quite surprisingly, not having given up on you yet. With the new gained information, you decide to…","stsec_ChOneCall_opt_yes:Pick up the call
+stsec_ChOneCall_opt_no:Only a fool picks up unknown calls. Ignore and move on",
+stsec_ChOneCallEnd,DialogOptionSelected,$option == stsec_ChOneCall_opt_no,"
 FireAll PopulateOptions","Although a call coming from inside the Academy itself could be worthwhile, you decide that you have better things to do, such as meetings with the Provost of the whole academy and what not.
 
-Although a part of you is wondering if, perhaps, you just missed something interesting. Ah, well, the sector is interesting enough as it is, no? You ignore the thoughts and move on.
+Some part of you is wondering if, perhaps, you just missed something interesting. The sector is interesting enough as it is, I suppose. You ignore the thoughts and move on.
 ",,
+stsec_ChOneQuestStart,DialogOptionSelected,$option == stsec_ChOneCallCont_opt_yes,,"Your comms officer lets out an audible sigh. ""Perhaps. Let us hope that is indeed the case.""","stsec_ChOneCallCont_opt_end1:Thank your comms officer and cut the comms link
+stsec_ChOneCallCont_opt_end2:Cut the comms link",
+stsec_ChOneQuestDenied,DialogOptionSelected,$option == stsec_ChOneCallCont_opt_no,"
+FireAll PopulateOptions","""That might be for the best, $PlayerSirOrMadam,"" your comms officer notes. You sense a bit of relief in his voice.",,
+stsec_ChOneQuestProbe,DialogOptionSelected,$option == stsec_ChOneCallCont_opt_probe,SetOptionColor stsec_ChOneCallCont_opt_yes highlight ShowDefaultVisual,"""Well, it *seems* to be harmless, though… I should note, it isn’t particularly difficult to hide malicious code. Finding it is difficult even when you have the source code, which we don’t have.""","stsec_ChOneCallCont_opt_yes:""What if she really does need our help?""
+stsec_ChOneCallCont_opt_no:""It is too high of a risk indeed.""",
+stsec_ChOneQuestStartEnd,DialogOptionSelected,$option == stsec_ChOneCallCont_opt_end2,"$option = stsec_ChOneCallCont_opt_end1
+FireBest DialogOptionSelected",,,
+stsec_ChOneQuestStartEnd2,DialogOptionSelected,$option == stsec_ChOneCallCont_opt_end1,"EndConversation
+BeginMission stsec_chone
+Call $global.stsec_chone_ref updateData
+$global.stsec_chone_notFoundLily = true
+FireAll PopulateOptions",,,
+stsec_ChOneQuestAskRec,PopulateOptions,"$id == station_galatia_academy
+$global.stsec_chone_notFoundLily == true
+$global.stsec_chone_madeRecAngry == false",,,stsec_ChOneQuestFL_opt_ask_receptionist:Talk with the receptionist,
+stsec_ChOneQuestAskRec_mad,PopulateOptions,"$id == station_galatia_academy
+$global.stsec_chone_notFoundLily == true
+$global.stsec_chone_madeRecAngry == true",,,stsec_ChOneQuestFL_opt_ask_receptionist_mad:Talk with the receptionist,
+stsec_ChOneQuestAskRecStart,DialogOptionSelected,$option == stsec_ChOneQuestFL_opt_ask_receptionist,"BeginConversation stsec_ga_receptionist
+$stsec_chone_talkingWithRec = true
+FireAll STSEC_Receptionist","You go up to the receptionist to inquire about the Academy – though, your end goal is, of course, obtaining access to an Academy device.
+
+""Good evening, $PlayerSirOrMadam. How may I be of assistance?""
+",,
+stsec_ChOneQuestAskRecStart_mad,DialogOptionSelected,$option == stsec_ChOneQuestFL_opt_ask_receptionist_mad,"BeginConversation stsec_ga_receptionist
+$stsec_chone_talkingWithRec = true
+FireAll STSEC_Receptionist","You go up to the receptionist to inquire about the Academy – though the receptionist is clearly not amused.
+
+""...you again?""
+",,
+stsec_ChOneQuestAskRec_InqNeutral,STSEC_Receptionist,"!RepGTE independent COOPERATIVE
+$stsec_chone_talkingWithRec_learntnetwork == false",,,"stsec_ChOneQuestFL_rec_opt_asknetwork_notknown:""Can you tell me about the Academy network and if I can access it somewhere?""",
+stsec_ChOneQuestAskRec_InqKnown,STSEC_Receptionist,"RepGTE independent COOPERATIVE
+$stsec_chone_talkingWithRec_learntnetwork == false","SetTooltip stsec_ChOneQuestFL_rec_opt_asknetwork_known ""Due to your reputation by the Academy, the receptionist seems more open about sharing information with you.""",,"stsec_ChOneQuestFL_rec_opt_asknetwork_known:""Could you tell me more about the Academy network?""",
+stsec_ChOneQuestAskRec_AskNice,STSEC_Receptionist,$stsec_chone_talkingWithRec_askednicely == false,,,"stsec_ChOneQuestFL_rec_opt_asknicely:""Could I quickly do something on your computer?""",
+stsec_ChOneQuestAskRec_AskNiceAgain,STSEC_Receptionist,"$stsec_chone_talkingWithRec_askednicely == true
+$stsec_chone_talkingWithRec_askednicelyagain == false",,,"stsec_ChOneQuestFL_recagain_opt_asknicely:""Pretty please?""",
+stsec_ChOneQuestAskRec_AskBad,STSEC_Receptionist,$stsec_chone_talkingWithRec_askedbadly == false,,,"stsec_ChOneQuestFL_rec_opt_askthreaten:""Give me access to your computer or else.""",
+stsec_ChOneQuestAskRec_AskBadAgain,STSEC_Receptionist,"$stsec_chone_talkingWithRec_askedbadly == true
+$stsec_chone_talkingWithRec_askedbadlyagain == false
+$player.fleetPoints > 50
+",,,"stsec_ChOneQuestFL_recagain_opt_askthreaten:""If you do not give me access, I will blow this entire station into pieces!""",
+stsec_ChOneQuestAskRec_AskBadAgainWeak,STSEC_Receptionist,"$stsec_chone_talkingWithRec_askedbadly == true
+$stsec_chone_talkingWithRec_askedbadlyagain == false
+$player.fleetPoints <= 50",,,"stsec_ChOneQuestFL_recagain_opt_askthreaten_weak:""If you do not give me access, I will blow this entire station into pieces.""",
+stsec_ChOneQuestAskRec_AskSpecial,STSEC_Receptionist,$stsec_chone_talkingWithRec_asked == false,"SetStoryOption stsec_ChOneQuestFL_rec_opt_askspecial general ""Convinced the receptionist to let you use her computer.""
+SetTooltip stsec_ChOneQuestFL_rec_opt_askspecial ""Convince her that you’re just a well-meaning IT specialist.""",,"stsec_ChOneQuestFL_rec_opt_askspecial:""I am part of the Academy’s IT department and we are conducting a systems check."" (lie)",
+stsec_ChOneQuestAskRec_AskSpecialHated,STSEC_Receptionist,$stsec_chone_talkingWithRec_asked == true,"SetStoryOption stsec_ChOneQuestFL_recagain_opt_askspecial general ""Convinced the receptionist to let you use her computer.""
+SetTooltip stsec_ChOneQuestFL_recagain_opt_askspecial ""Tried to convince her that you’re just a well-meaning IT specialist.""",,"stsec_ChOneQuestFL_recagain_opt_askspecial:""I am part of the Academy’s IT department and we are conducting a systems check."" (lie)",
+stsec_ChOneQuestAskRec_Leave,STSEC_Receptionist,,,,stsec_ChOneQuestFL_rec_opt_leave:Leave,
+stsec_ChOneQuestAskRec_InqNeutral_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_rec_opt_asknetwork_notknown
+","$stsec_chone_talkingWithRec_learntnetwork = true
+FireAll STSEC_Receptionist","The receptionist looks up to you, a bit confused. ""I… am afraid that is classified information, $PlayerSirOrMadam. Not to discredit your standing, it’s just that we have safety protocols – I’m sure you understand.""",,
+stsec_ChOneQuestAskRec_InqKnown_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_rec_opt_asknetwork_known
+","$stsec_chone_talkingWithRec_learntnetwork = true
+FireAll STSEC_Receptionist","""Well, if you’re meaning to send an e-mail to an academy worker or student, you can use the public computers in the Library Academia."" She makes some not particularly easy to understand gestures, seemingly throwing to show you how to get to the library. ""It’s at the end of the hallway to the right.""",,
+stsec_ChOneQuestAskRec_AskNice_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_rec_opt_asknicely
+","$stsec_chone_talkingWithRec_askednicely = true
+$stsec_chone_talkingWithRec_asked = true
+FireAll STSEC_Receptionist","""Sorry, but access to Academy computers is only for employees and academicians.""",,
+stsec_ChOneQuestAskRec_AskBad_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_rec_opt_askthreaten
+","$global.stsec_chone_madeRecAngry = true
+$stsec_chone_talkingWithRec_askedbadly = true
+$stsec_chone_talkingWithRec_asked = true
+AdjustRepActivePerson SUSPICIOUS -5
+FireAll STSEC_Receptionist","""Please calm yourself, $PlayerSirOrMadam, or I am going to have to call security.""",,
+stsec_ChOneQuestAskRec_AskSpecial_resp,DialogOptionSelected,$option == stsec_ChOneQuestFL_rec_opt_askspecial,FireAll STSEC_Receptionist,,,
+stsec_ChOneQuestAskRec_Leave_resp,DialogOptionSelected,$option == stsec_ChOneQuestFL_rec_opt_leave,"EndConversation
+FireAll PopulateOptions",,,
+stsec_ChOneQuestAskRec_AskNiceAgain_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_recagain_opt_asknicely
+","$global.stsec_chone_madeRecAngry = true
+$stsec_chone_talkingWithRec_askednicelyagain = true
+FireAll STSEC_Receptionist","""I am sorry, $PlayerSirOrMadam, but as I said, access to Academy devices is restricted. I’m afraid I can’t help you.""",,
+stsec_ChOneQuestAskRec_AskBadAgain_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_recagain_opt_askthreaten
+","$stsec_chone_talkingWithRec_askedbadlyagain = true
+AdjustRepActivePerson SUSPICIOUS -15
+AdjustRep independent -5","The receptionist presses a button under her table, looking over to you after. ""I am calling security to escort you out, please stay where you are.""
+
+Before you’re even able to consider another course of action, perhaps an even bigger threat which they would definitely listen to this time, two guards come up to you. Although one could attempt to resist, you realise that any attempts would be either futile or counterproductive, and you simply let them escort you out of the premises. Suffice to say, the receptionist will probably not be talking to you anymore.","stsec_ChOneQuestFL_recagain_opt_leave:Stay quiet and go somewhere else
+stsec_ChOneQuestFL_recagain_opt_leaveflavour:""You will regret this!""",
+stsec_ChOneQuestAskRec_AskBadAgainWeak_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_recagain_opt_askthreaten_weak
+","$stsec_chone_talkingWithRec_askedbadlyagain = true
+AdjustRepActivePerson SUSPICIOUS -15
+AdjustRep independent -5","The receptionist stares at you, visibly confused, though you can almost sense a smirk on his face. ""…with what fleet, $PlayerSirOrMadam?""
+
+You realise that the amount of combat ships you have can be counted on one hand – perhaps threatening to blow up the Academy isn’t the greatest idea when you have nothing to back up your words. You have no choice but to leave in shame, your bluff called out.",stsec_ChOneQuestFL_recagain_opt_leave:Leave,
+stsec_ChOneQuestAskRec_AskSpecialHated_resp,DialogOptionSelected,$option == stsec_ChOneQuestFL_recagain_opt_askspecial,"SetStoryOption stsec_ChOneQuestFL_recagain_opt_doubledown general ""Convinced the receptionist to let you use her computer.""
+SetTooltip stsec_ChOneQuestFL_recagain_opt_doubledown""Convince her that this was all just part of the systems test – have to be ready against social engineering attacks as well, after all!""
+AdjustRepActivePerson SUSPICIOUS -1","""…""
+
+The receptionist stares you down, clearly not having bought a single word of what you just said.
+
+""A very likely story, considering you were just pleading to gain access to our computers.""","stsec_ChOneQuestFL_recagain_opt_doubledown:""It was actually all a ruse to see if there was a vulnerability to a social engineering attack."" (lie)
+stsec_ChOneQuestFL_recagain_opt_leave:Stay quiet and go somewhere else",
+stsec_ChOneQuestAskRec_AskAgain_leaveflavour,DialogOptionSelected,$option == stsec_ChOneQuestFL_recagain_opt_leaveflavour,"$option = stsec_ChOneQuestFL_recagain_opt_leave
+FireBest DialogOptionSelected",,,
+stsec_ChOneQuestAskRec_AskAgain_leave,DialogOptionSelected,$option == stsec_ChOneQuestFL_recagain_opt_leave,"EndConversation
+FireAll PopulateOptions",,,
+,,,,,,
+stsec_ChOneQuestLibraryGo,PopulateOptions,"$id == station_galatia_academy
+$global.stsec_chone_notFoundLily == true",,,stsec_ChOneQuestFL_opt_enter_library:Visit the Library Academia,
+stsec_ChOneQuestLibraryEnter,DialogOptionSelected,$option == stsec_ChOneQuestFL_opt_enter_library,"ShowImageVisual library_academia
+FireAll STSEC_LibraryWings",You enter the Library Academia.,,
+stsec_ChOneQuestLibraryWest_Go,STSEC_LibraryWings,,,,stsec_ChOneQuestFL_lib_opt_gowest:Go to the western wing,
+stsec_ChOneQuestLibraryEast_Go,STSEC_LibraryWings,,,,stsec_ChOneQuestFL_lib_opt_goeast:Go to the eastern wing,
+stsec_ChOneQuestLibraryExit,STSEC_LibraryWings,,,,stsec_ChOneQuestFL_lib_opt_exit:Leave the Library,
+stsec_ChOneQuestLibraryExit_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_exit,"ShowDefaultVisual
+FireAll PopulateOptions",You leave the library.,,
+stsec_ChOneQuestLibraryWest_Go_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_gowest,FireAll STSEC_LibraryWest,You go to the western wing.,,
+stsec_ChOneQuestLibraryEast_Go_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_goeast,FireAll STSEC_LibraryEast,You go to the eastern wing.,,
+,,,,,,
+stsec_ChOneQuestLibraryWestRight_Go,STSEC_LibraryWest,,,,stsec_ChOneQuestFL_lib_opt_gowestright:Go to the right,
+stsec_ChOneQuestLibraryWestLeft_Go,STSEC_LibraryWest,,,,stsec_ChOneQuestFL_lib_opt_gowestleft:Go to the left,
+stsec_ChOneQuestLibraryWestRight_Go_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_gowestright,FireAll STSEC_LibraryWestLeft,You enter the left room. (west),,
+stsec_ChOneQuestLibraryWestLeft_Go_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_gowestleft,FireAll STSEC_LibraryWestRight,You enter the right room. (west),,
+,,,,,,
+stsec_ChOneQuestLibraryWestRight_Return,STSEC_LibraryWestLeft,,,,stsec_ChOneQuestFL_lib_opt_returnwest:Go back,
+stsec_ChOneQuestLibraryWestLeft_Return,STSEC_LibraryWestRight,,,,stsec_ChOneQuestFL_lib_opt_returnwest:Go back,
+stsec_ChOneQuestLibraryWestBoth_Return_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_returnwest,FireAll STSEC_LibraryWest,You go back to the western hall.,,
+,,,,,,
+stsec_ChOneQuestLibraryEastRight_Go,STSEC_LibraryEast,,,,stsec_ChOneQuestFL_lib_opt_goeastright:Go to the right,
+stsec_ChOneQuestLibraryEastLeft_Go,STSEC_LibraryEast,,,,stsec_ChOneQuestFL_lib_opt_goeastleft:Go to the left,
+stsec_ChOneQuestLibraryEastRight_Go_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_goeastright,FireAll STSEC_LibraryEastLeft,You enter the right room. (east),,
+stsec_ChOneQuestLibraryEastLeft_Go_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_goeastleft,FireAll STSEC_LibraryEastRight,You enter the left room. (east),,
+,,,,,,
+stsec_ChOneQuestLibraryEastRight_Return,STSEC_LibraryEastLeft,,,,stsec_ChOneQuestFL_lib_opt_returneast:Go back,
+stsec_ChOneQuestLibraryEastLeft_Return,STSEC_LibraryEastRight,,,,stsec_ChOneQuestFL_lib_opt_returneast:Go back,
+stsec_ChOneQuestLibraryEastBoth_Return_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_returneast,FireAll STSEC_LibraryEast,You go back to the eastern hall.,,
+,,,,,,
+stsec_ChOneQuestLibraryWestReturn,STSEC_LibraryWest,,,,stsec_ChOneQuestFL_lib_opt_returnhall:Return to the main hall,
+stsec_ChOneQuestLibraryEastReturn,STSEC_LibraryEast,,,,stsec_ChOneQuestFL_lib_opt_returnhall:Return to the main hall,
+stsec_ChOneQuestLibraryReturn_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_returnhall,FireAll STSEC_LibraryWings,You return to the library.,,
