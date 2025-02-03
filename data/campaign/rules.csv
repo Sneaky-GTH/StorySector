@@ -90,7 +90,8 @@ stsec_ChOneQuestAskRec_InqNeutral_resp,DialogOptionSelected,"$option == stsec_Ch
 FireAll STSEC_Receptionist","The receptionist looks up to you, a bit confused. ""I… am afraid that is classified information, $PlayerSirOrMadam. Not to discredit your standing, it’s just that we have safety protocols – I’m sure you understand.""",,
 stsec_ChOneQuestAskRec_InqKnown_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_rec_opt_asknetwork_known
 ","$stsec_chone_talkingWithRec_learntnetwork = true
-FireAll STSEC_Receptionist","""Well, if you’re meaning to send an e-mail to an academy worker or student, you can use the public computers in the Library Academia."" She makes some not particularly easy to understand gestures, seemingly throwing to show you how to get to the library. ""It’s at the end of the hallway to the right.""",,
+$global.stsec_chone_gotLibraryDirections = true
+FireAll STSEC_Receptionist","""Well, if you’re meaning to send an e-mail to an academy worker or student, you can use the public computers in the Library Academia."" She makes some not particularly easy to understand gestures, trying to show you how to get to the library. ""It’s at the end of the hallway to the right.""",,
 stsec_ChOneQuestAskRec_AskNice_resp,DialogOptionSelected,"$option == stsec_ChOneQuestFL_rec_opt_asknicely
 ","$stsec_chone_talkingWithRec_askednicely = true
 $stsec_chone_talkingWithRec_asked = true
@@ -135,9 +136,37 @@ stsec_ChOneQuestAskRec_AskAgain_leave,DialogOptionSelected,$option == stsec_ChOn
 FireAll PopulateOptions",,,
 ,,,,,,
 stsec_ChOneQuestLibraryGo,PopulateOptions,"$id == station_galatia_academy
-$global.stsec_chone_notFoundLily == true",,,stsec_ChOneQuestFL_opt_enter_library:Visit the Library Academia,
+$global.stsec_chone_notFoundLily == true
+$global.stsec_chone_gotLibraryDirections == false
+$stsec_chone_knowsLibraryLocation == false",,,stsec_ChOneQuestFL_opt_enter_library:Visit the Library Academia,
+stsec_ChOneQuestLibraryGoSmart,PopulateOptions,"$id == station_galatia_academy
+$global.stsec_chone_notFoundLily == true
+$global.stsec_chone_gotLibraryDirections == true
+$stsec_chone_knowsLibraryLocation == false",,,stsec_ChOneQuestFL_opt_enter_librarysmart:Visit the Library Academia,
+stsec_ChOneQuestLibraryGoExperienced,PopulateOptions,"$id == station_galatia_academy
+$global.stsec_chone_notFoundLily == true
+$stsec_chone_knowsLibraryLocation == true",,,stsec_ChOneQuestFL_opt_enter_libraryexperienced:Visit the Library Academia,
 stsec_ChOneQuestLibraryEnter,DialogOptionSelected,$option == stsec_ChOneQuestFL_opt_enter_library,"ShowImageVisual library_academia
-FireAll STSEC_LibraryWings",You enter the Library Academia.,,
+$stsec_chone_knowsLibraryLocation = true
+FireAll STSEC_LibraryWings","After searching around the academy for directions, you eventually find your way to the entrance of the Library Academia. As the doors open before you, you are met with a view most spectacular indeed. Rows and rows of books occupy every direction you look in, while students and professors quietly tread from one end of the library to the other and back.
+
+As the the only scientific academic library in the core, you are currently no doubt standing in one of the most important locations in the entire Persean sector. Funnily enough, though, you are not here for books – you are here to gain access to the Academy network.
+
+You notice that, currently, you are in the main hall of the library, which is further divided into the Western Wing and Eastern Wing.",,
+stsec_ChOneQuestLibraryEnterSmart,DialogOptionSelected,$option == stsec_ChOneQuestFL_opt_enter_librarysmart,"ShowImageVisual library_academia
+$stsec_chone_knowsLibraryLocation = true
+FireAll STSEC_LibraryWings","Using the instructions given to you by the receptionist, you quickly find your way to the entrance of the Library Academia. As the doors open before you, you are met with a view most spectacular indeed. Rows and rows of books occupy every direction you look in, while students and professors quietly tread from one end of the library to the other and back.
+
+As the the only scientific academic library in the core, you are currently no doubt standing in one of the most important locations in the entire Persean sector. Funnily enough, though, you are not here for books – you are here to gain access to the Academy network.
+
+You notice that, currently, you are in the main hall of the library, which is further divided into the Western Wing and Eastern Wing.",,
+stsec_ChOneQuestLibraryEnterExperienced,DialogOptionSelected,$option == stsec_ChOneQuestFL_opt_enter_libraryexperienced,"ShowImageVisual library_academia
+$stsec_chone_knowsLibraryLocation = true
+FireAll STSEC_LibraryWings","Having already learnt the lay of the land, you head directly to the Library Academia. As the doors open before you, you are met with a view most spectacular indeed. Rows and rows of books occupy every direction you look in, while students and professors quietly tread from one end of the library to the other and back.
+
+As the the only scientific academic library in the core, you are currently no doubt standing in one of the most important locations in the entire Persean sector. Funnily enough, though, you are not here for books – you are here to gain access to the Academy network.
+
+You notice that, currently, you are in the main hall of the library, which is further divided into the Western Wing and Eastern Wing.",,
 stsec_ChOneQuestLibraryWest_Go,STSEC_LibraryWings,,,,stsec_ChOneQuestFL_lib_opt_gowest:Go to the western wing,
 stsec_ChOneQuestLibraryEast_Go,STSEC_LibraryWings,,,,stsec_ChOneQuestFL_lib_opt_goeast:Go to the eastern wing,
 stsec_ChOneQuestLibraryExit,STSEC_LibraryWings,,,,stsec_ChOneQuestFL_lib_opt_exit:Leave the Library,
