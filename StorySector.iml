@@ -6,6 +6,7 @@
       <sourceFolder url="file://$MODULE_DIR$/helper" isTestSource="false" packagePrefix="data.scripts.campaign.intel.missions" />
       <sourceFolder url="file://$MODULE_DIR$/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/helper" />
+      <excludeFolder url="file://$MODULE_DIR$/jars" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -74,9 +74,6 @@ public class ChainedOne extends HubMissionWithSearch {
     protected PersonAPI receptionist;
     protected PersonAPI librarian;
 
-    public static String receptionist_id = "stsec_ga_receptionist";
-    public static String librarian_id = "stsec_ga_librarian";
-
     protected MarketAPI galatia;
     protected MarketAPI baires;
     protected MarketAPI volturn;
@@ -86,7 +83,10 @@ public class ChainedOne extends HubMissionWithSearch {
     @Override
     protected boolean create(MarketAPI createdAt, boolean barEvent) {
 
+        log.debug("[STSEC] Test 1234");
+
         log.debug("[STSEC] Please...?!");
+
 
         // if already accepted by the player, abort
         if (!setGlobalReference("$stsec_chone_ref", "$stsec_chone_inProgress")) {
@@ -96,8 +96,11 @@ public class ChainedOne extends HubMissionWithSearch {
         log.debug("[STSEC] Let's do this thing!!!!!");
 
         // Check if the important things arent gone for some god-knows what reason
-        lily = getImportantPerson(ChainedOnePeople.STSEC_LILY);
+        lily = getImportantPerson(ChainedOnePeople.STSEC_LILY_ID);
         if (lily == null) return false;
+
+        receptionist = getImportantPerson(ChainedOnePeople.STSEC_RECEPTIONIST_ID);
+        if (receptionist == null) return false;
 
         volturn = getMarket("volturn");
 
@@ -111,20 +114,6 @@ public class ChainedOne extends HubMissionWithSearch {
         log.debug("[STSEC] We set the Story Mission!");
 
         xpReward = 5000;
-
-        receptionist = Global.getSector().getFaction(Factions.INDEPENDENT).createRandomPerson(genRandom);
-        receptionist.setId(receptionist_id);
-        receptionist.setRankId(Ranks.CITIZEN);
-        receptionist.setPostId(Ranks.POST_CITIZEN);
-        receptionist.setPortraitSprite(Global.getSettings().getSpriteName("characters", "stsec_ga_receptionist"));
-        Global.getSector().getImportantPeople().addPerson(receptionist);
-
-        librarian = Global.getSector().getFaction(Factions.INDEPENDENT).createRandomPerson(genRandom);
-        librarian.setId(librarian_id);
-        librarian.setRankId(Ranks.CITIZEN);
-        librarian.setPostId(Ranks.POST_CITIZEN);
-        librarian.setPortraitSprite(Global.getSettings().getSpriteName("characters", "standfast"));
-        Global.getSector().getImportantPeople().addPerson(librarian);
 
         //makeImportant(galatia, "$stsec_chone_meetLilyForFirstTime", Stage.MEET_LILY);
 

@@ -196,3 +196,6 @@ stsec_ChOneQuestLibraryEastBoth_Return_dial,DialogOptionSelected,$option == stse
 stsec_ChOneQuestLibraryWestReturn,STSEC_LibraryWest,,,,stsec_ChOneQuestFL_lib_opt_returnhall:Return to the main hall,
 stsec_ChOneQuestLibraryEastReturn,STSEC_LibraryEast,,,,stsec_ChOneQuestFL_lib_opt_returnhall:Return to the main hall,
 stsec_ChOneQuestLibraryReturn_dial,DialogOptionSelected,$option == stsec_ChOneQuestFL_lib_opt_returnhall,FireAll STSEC_LibraryWings,You return to the library.,,
+,,,,,,
+stsec_ChOneQuestLibraryEastLeft_Computer,STSEC_LibraryEastLeft,,,You notice a bunch of computers.,,
+stsec_ChOneQuestLibraryEastLeft_Computer_dial,DialogOptionSelected,,FireAll STSEC_LibraryComputers,,,
